@@ -560,8 +560,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 34.22
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1088,8 +1088,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 1
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!135 &1658962394
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1180,7 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df1ecfbc21b29949a6c1265df94affc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 60
 --- !u!1 &1703735888
 GameObject:
   m_ObjectHideFlags: 0

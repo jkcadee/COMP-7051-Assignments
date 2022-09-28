@@ -22,9 +22,19 @@ public class BallBehaviour : MonoBehaviour
         StartBallMovement();
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag != "Player" && other.gameObject.tag != "Player2")
+            return;
+
+        Rigidbody otherBody = gameObject.GetComponent<Rigidbody>();
+
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
+
         rb.velocity = rb.velocity.normalized * speed;
     }
 }
