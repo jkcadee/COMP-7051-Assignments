@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Opponent
+  - P1_Goal
+  - P2_Goal
+  - Opponent_Goal
+  - Player2
   layers:
   - Default
   - TransparentFX
