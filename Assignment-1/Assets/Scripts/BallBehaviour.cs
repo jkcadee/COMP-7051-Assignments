@@ -20,6 +20,8 @@ public class BallBehaviour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         StartBallMovement();
+
+        Debug.Log(new Vector3(-1, -1, -1).normalized);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -27,7 +29,10 @@ public class BallBehaviour : MonoBehaviour
         if (other.gameObject.tag != "Player" && other.gameObject.tag != "Player2")
             return;
 
-        Rigidbody otherBody = gameObject.GetComponent<Rigidbody>();
+        Rigidbody otherBody = other.gameObject.GetComponent<Rigidbody>();
+
+        Vector3 v3 = new Vector3(rb.position.x - otherBody.position.x, 0, otherBody.position.z - rb.position.z);
+        rb.velocity = v3.normalized * -speed;
 
     }
 
@@ -36,5 +41,6 @@ public class BallBehaviour : MonoBehaviour
     {
 
         rb.velocity = rb.velocity.normalized * speed;
+
     }
 }
