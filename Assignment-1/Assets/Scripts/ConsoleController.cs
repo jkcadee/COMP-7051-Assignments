@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+// This video was used predominantly to implement the console for this assignment:
+// https://youtu.be/VzOEM-4A2OM
+
 public class ConsoleController : MonoBehaviour
 {
     bool showConsole;
@@ -16,6 +20,8 @@ public class ConsoleController : MonoBehaviour
     public List<object> commandList;
 
     public GameObject ground;
+    public GameObject paddle1;
+    public GameObject paddle2;
     
     public void OnToggleConsole(InputAction.CallbackContext obj)
     {
@@ -29,6 +35,7 @@ public class ConsoleController : MonoBehaviour
             RunCommand();
             input = "";
         }
+
     }
 
     private void Awake()
@@ -39,13 +46,13 @@ public class ConsoleController : MonoBehaviour
 
         CHANGE_BG_COLOUR_GREEN = new ConsoleCommand("change_bg_green", "Changes the background panel to be green", "change_bg_green", () =>
         {
-            Debug.Log("turned green");
-            GetComponent<Renderer>().material.color = Color.green;
+            ground.GetComponent<Renderer>().material.color = Color.green;
         });
 
-        CHANGE_PADDLE_COLOUR_ORANGE = new ConsoleCommand("change_paddle_orange", "Changes the paddle colours to orange", "change_bg_green", () =>
+        CHANGE_PADDLE_COLOUR_ORANGE = new ConsoleCommand("change_paddle_orange", "Changes the paddle colours to orange", "change_paddle_orange", () =>
         {
-            GetComponent<Renderer>().material.color = Color.green;
+            paddle1.GetComponent<Renderer>().material.color = new Color(0.878f, 0.427f, 0.129f, 1f);
+            paddle2.GetComponent<Renderer>().material.color = new Color(0.878f, 0.427f, 0.129f, 1f);
         });
 
 
@@ -86,9 +93,12 @@ public class ConsoleController : MonoBehaviour
         {
             ConsoleCommandBase commandBase = commandList[i] as ConsoleCommandBase;
 
-            if (commandList[i] as ConsoleCommand != null) // we are checking if the object type fits the cast here (ConsoleCommandBase)
+            if (input.Contains(commandBase.commandId))
             {
-                (commandList[i] as ConsoleCommand).Invoke(); // if it does, we cast back to ConsoleCommand and invoke it
+                if (commandList[i] as ConsoleCommand != null) // we are checking if the object type fits the cast here (ConsoleCommandBase)
+                {
+                    (commandList[i] as ConsoleCommand).Invoke(); // if it does, we cast back to ConsoleCommand and invoke it
+                }
             }
         }
     }

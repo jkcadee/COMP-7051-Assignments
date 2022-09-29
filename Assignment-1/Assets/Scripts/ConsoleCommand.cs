@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// This video was used predominantly to implement the console for this assignment:
+// https://youtu.be/VzOEM-4A2OM
+
 public class ConsoleCommandBase
 {
     private string _commandId;
