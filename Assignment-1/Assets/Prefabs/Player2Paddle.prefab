@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5877907260070040045}
   - component: {fileID: 9130901382961941956}
   - component: {fileID: 7488046374213919464}
+  - component: {fileID: 891999686}
   m_Layer: 0
   m_Name: Player2Paddle
   m_TagString: Player2
@@ -110,3 +111,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a075c55bfcfed5b49ba8e3c7b91fa950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &891999686
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2940999553137855200}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 118
+  m_CollisionDetection: 0
