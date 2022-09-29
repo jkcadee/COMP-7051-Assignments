@@ -11,6 +11,7 @@ public class BallBehaviour : MonoBehaviour
 
     /// <summary>
     /// Starts the ball's movement.
+    /// 1 for direction moves right, -1 moves left.
     /// </summary>
     /// <param name="direction">1 = right, -1 = left</param>
     void StartBallMovement(int direction)
@@ -30,6 +31,7 @@ public class BallBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        
         if (other.gameObject.tag != "Player" && other.gameObject.tag != "Player2")
             return;
 
