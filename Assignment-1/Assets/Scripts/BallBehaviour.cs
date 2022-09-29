@@ -31,7 +31,7 @@ public class BallBehaviour : MonoBehaviour
 
         Rigidbody otherBody = other.gameObject.GetComponent<Rigidbody>();
 
-        Vector3 v3 = new Vector3(rb.position.x - otherBody.position.x, 0, otherBody.position.z - rb.position.z);
+        Vector3 v3 = new Vector3(otherBody.position.x - rb.position.x, 0, otherBody.position.z - rb.position.z);
         rb.velocity = v3.normalized * -speed;
 
     }
