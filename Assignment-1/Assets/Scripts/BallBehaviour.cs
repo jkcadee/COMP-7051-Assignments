@@ -9,19 +9,23 @@ public class BallBehaviour : MonoBehaviour
     Rigidbody rb;
     public float speed = 30f;
 
-    void StartBallMovement()
+    /// <summary>
+    /// Starts the ball's movement.
+    /// </summary>
+    /// <param name="direction">1 = right, -1 = left</param>
+    void StartBallMovement(int direction)
     {
-        Vector3 v3 = new Vector3(speed, 0, speed);
+        Vector3 v3 = new Vector3(direction, 0, Random.Range(-0.9f, 0.9f)) * speed;
         rb.AddForce(v3, ForceMode.VelocityChange);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        StartBallMovement();
 
-        Debug.Log(new Vector3(-1, -1, -1).normalized);
+        rb = GetComponent<Rigidbody>();
+        StartBallMovement(1);
+
     }
 
     private void OnCollisionEnter(Collision other)
