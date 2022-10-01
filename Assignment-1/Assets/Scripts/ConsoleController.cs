@@ -7,6 +7,10 @@ using UnityEngine.InputSystem;
 // This video was used predominantly to implement the console for this assignment:
 // https://youtu.be/VzOEM-4A2OM
 
+// CONSOLE COMMANDS:
+// change_bg_green
+// change_paddle_orange
+
 public class ConsoleController : MonoBehaviour
 {
     bool showConsole;

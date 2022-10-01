@@ -1147,6 +1147,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5862cb1d5bda9e40ba48eff8180935d, type: 3}
+--- !u!1 &781341752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2940999553137855200, guid: a5862cb1d5bda9e40ba48eff8180935d, type: 3}
+  m_PrefabInstance: {fileID: 781341751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &906201039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,6 +2235,7 @@ GameObject:
   - component: {fileID: 1659820563}
   - component: {fileID: 1659820562}
   - component: {fileID: 1659820561}
+  - component: {fileID: 1659820564}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2303,6 +2309,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1659820564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659820560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd241e306fa15f4e836f86c96e852ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ground: {fileID: 1739035176}
+  paddle1: {fileID: 2068627794}
+  paddle2: {fileID: 781341752}
 --- !u!1001 &1739035175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2360,6 +2381,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37ac041395b1bbb408c09009dbea34d5, type: 3}
+--- !u!1 &1739035176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8086520275340852447, guid: 37ac041395b1bbb408c09009dbea34d5, type: 3}
+  m_PrefabInstance: {fileID: 1739035175}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1863325569
 GameObject:
   m_ObjectHideFlags: 0
@@ -2649,3 +2675,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb11ed7bf28ecc949b8d47c33abe32b0, type: 3}
+--- !u!1 &2068627794 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8685549891418170416, guid: bb11ed7bf28ecc949b8d47c33abe32b0, type: 3}
+  m_PrefabInstance: {fileID: 2068627793}
+  m_PrefabAsset: {fileID: 0}
