@@ -1953,6 +1953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 8884298560559758964, guid: 2e0218477cca0bb4d86cd5264f3e10e5, type: 3}
+      propertyPath: m_TagString
+      value: Ball
+      objectReference: {fileID: 0}
     - target: {fileID: 9039880949160570646, guid: 2e0218477cca0bb4d86cd5264f3e10e5, type: 3}
       propertyPath: p1Score
       value: 
@@ -2644,6 +2648,7 @@ GameObject:
   - component: {fileID: 4644646029301573963}
   - component: {fileID: 8021165027053090146}
   - component: {fileID: 1290172948630613344}
+  - component: {fileID: 8021165027053090148}
   m_Layer: 0
   m_Name: CPUPaddle
   m_TagString: Player2
@@ -2706,3 +2711,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8021165027053090148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4122793622536303174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c59ff40e52a8fe478fafd56e493e62b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 35

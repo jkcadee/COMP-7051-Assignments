@@ -8,6 +8,7 @@ public class BallBehaviour : MonoBehaviour
 
     Rigidbody rb;
     public float speed = 30f;
+    public float ballDirection;
 
     /// <summary>
     /// Starts the ball's movement.
@@ -47,6 +48,7 @@ public class BallBehaviour : MonoBehaviour
     {
 
         rb.velocity = rb.velocity.normalized * speed;
-
+        ballDirection = transform.InverseTransformDirection(rb.velocity).x;
     }
+
 }
