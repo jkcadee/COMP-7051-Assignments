@@ -9,6 +9,7 @@ TagManager:
   - P2_Goal
   - Opponent_Goal
   - Player2
+  - Ball
   layers:
   - Default
   - TransparentFX
