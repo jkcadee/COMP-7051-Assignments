@@ -6,7 +6,7 @@ public class ComputerAI : MonoBehaviour
 {
     private float upperBound = 20f;
     private float lowerBound = -20f;
-    public float moveSpeed = 35f;
+    public float moveSpeed = 25f;
 
     private GameObject ball;
     private Vector3 ballPosition;
