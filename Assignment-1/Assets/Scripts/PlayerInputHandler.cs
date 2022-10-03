@@ -8,7 +8,9 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private PlayerConfig playerConfig;
 
-    private InputActions controls;
+    public InputActions controls;
+
+    public PlayerInput input;
 
     private Mover mover;
 
@@ -23,6 +25,7 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     private void Input_onActionTriggered(CallbackContext obj) {
+        Debug.Log(obj.action);
         if (obj.action.name == controls.Player.Movement.name){
             OnMove(obj);
         }

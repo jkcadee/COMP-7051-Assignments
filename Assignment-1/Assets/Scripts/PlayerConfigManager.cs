@@ -28,7 +28,7 @@ public class PlayerConfigManager : MonoBehaviour
     public List<PlayerConfig> GetPlayerConfigs(){
         return playerConfigs;
     }
-    
+
     public void ReadyPlayer(int index){
         playerConfigs[index].IsReady = true;
         // if all players are ready
@@ -52,6 +52,9 @@ public class PlayerConfig
     public PlayerConfig(PlayerInput pi) {
         PlayerIndex = pi.playerIndex;
         Input = pi;
+        if (pi.playerIndex != 0) {
+            pi.SwitchCurrentActionMap("Player2Movement");
+        }
     }
     public PlayerInput Input { get; set;}
     public int PlayerIndex { get; set; }

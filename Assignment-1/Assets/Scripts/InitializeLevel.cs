@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class InitializeLevel : MonoBehaviour
@@ -15,6 +16,9 @@ public class InitializeLevel : MonoBehaviour
         //spawn players on spawn points
         for (int i = 0; i < playerConfigs.Length; i++ ){
             var player = Instantiate(playerPaddlePrefab,playerSpawns[i].position,playerSpawns[i].rotation,gameObject.transform);
+            if (i != 0){
+                playerConfigs[i].Input.SwitchCurrentActionMap("Player2");
+            }
             player.GetComponent<PlayerInputHandler>().InitializePlayer(playerConfigs[i]);
         }
     }
