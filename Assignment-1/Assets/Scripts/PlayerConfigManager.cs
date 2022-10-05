@@ -33,7 +33,7 @@ public class PlayerConfigManager : MonoBehaviour
         playerConfigs[index].IsReady = true;
         // if all players are ready
         if(playerConfigs.Count == MaxPlayers && playerConfigs.All(p => p.IsReady == true)) {
-            SceneManager.LoadScene("control_test_scene");
+            SceneManager.LoadScene("Player_V_Player_controller");
         }
     }
 
