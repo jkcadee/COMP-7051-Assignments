@@ -11,5 +11,6 @@ public class SceneChange : MonoBehaviour
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        PlayerConfigManager.Instance.ClearPlayerConfigs();
     }
 }

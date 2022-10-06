@@ -1186,6 +1186,18 @@ MonoBehaviour:
           m_StringArgument: Main_Menu
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2103422588}
+        m_TargetAssemblyTypeName: PlayerConfigManager, Assembly-CSharp
+        m_MethodName: ClearPlayerConfigs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &906201042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2568,6 +2580,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863325569}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1932388669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1932388671}
+  - component: {fileID: 1932388670}
+  m_Layer: 0
+  m_Name: LevelClearer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1932388670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932388669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8636ed6021193484e916b130d7081407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1932388671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932388669}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1968806526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,3 +2851,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1a47ee670366fd44b1adc38bca3f7de, type: 3}
+--- !u!114 &2103422588 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1166656226336659705, guid: c1a47ee670366fd44b1adc38bca3f7de, type: 3}
+  m_PrefabInstance: {fileID: 2103422587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff21c6b880f96c46b66fc85bf19f9d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
