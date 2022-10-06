@@ -17,6 +17,7 @@ public class ConsoleController : MonoBehaviour
     string input;
     private InputAction consoleToggleInput;
     private InputAction runCommandInput;
+    private InputAction closeConsoleInput;
     private Actions inputActions;
 
     public static ConsoleCommand CHANGE_BG_COLOUR_GREEN;
@@ -29,7 +30,12 @@ public class ConsoleController : MonoBehaviour
     
     public void OnToggleConsole(InputAction.CallbackContext obj)
     {
-        showConsole = !showConsole;
+        showConsole = true;
+    }
+
+    public void OnCloseConsole(InputAction.CallbackContext obj)
+    {
+        showConsole = false;
     }
 
     public void OnReturnCommand(InputAction.CallbackContext obj)
@@ -46,6 +52,7 @@ public class ConsoleController : MonoBehaviour
     {
         inputActions = new Actions();
         consoleToggleInput = inputActions.Player.ToggleConsole;
+        closeConsoleInput = inputActions.Player.CloseConsole;
         runCommandInput = inputActions.Player.RunCommand;
 
         CHANGE_BG_COLOUR_GREEN = new ConsoleCommand("change_bg_green", "Changes the background panel to be green", "change_bg_green", () =>
@@ -74,6 +81,9 @@ public class ConsoleController : MonoBehaviour
 
         runCommandInput.performed += OnReturnCommand;
         runCommandInput.Enable();
+
+        closeConsoleInput.performed += OnCloseConsole;
+        closeConsoleInput.Enable();
 
     }
 
