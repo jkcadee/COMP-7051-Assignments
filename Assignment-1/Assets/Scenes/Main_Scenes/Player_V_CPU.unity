@@ -2024,6 +2024,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 8884298560559758965, guid: 2e0218477cca0bb4d86cd5264f3e10e5, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9039880949160570646, guid: 2e0218477cca0bb4d86cd5264f3e10e5, type: 3}
       propertyPath: p1Score
       value: 
@@ -2749,4 +2753,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c59ff40e52a8fe478fafd56e493e62b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 35
+  moveSpeed: 20
