@@ -17,10 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayerSetup.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/control_test_scene.unity
     guid: 6ef5384809713364ca6bd5091b4a77fa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/mixed_input_local.unity
     guid: f41c628807256fc4a837c6e2bb4be221
+  - enabled: 1
+    path: Assets/Scenes/Main_Scenes/Player_V_Player_controller.unity
+    guid: 8c3537c46179f4041ab95a95e26b27a4
   m_configObjects: {}
