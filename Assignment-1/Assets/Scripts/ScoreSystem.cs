@@ -123,6 +123,7 @@ public class ScoreSystem : MonoBehaviour
         Enable_Win_Screen();
         //Stop the ball.
         stop_ball();
+        //PlayerConfigManager.Instance.ClearPlayerConfigs();
 
     }
 

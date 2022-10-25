@@ -12,10 +12,10 @@ public class Player2Movement : MonoBehaviour
     private InputAction movement;
 
     //Represents the maximum z value of the player object.
-    private float upperBound = 20.0f;
+    private float upperBound = 22.0f;
 
     //Represents the minimum z value of the player object
-    private float lowerBound = -20.0f;
+    private float lowerBound = -22.0f;
 
     //Represents the rigidbody component of the player.
     Rigidbody rb;
@@ -55,33 +55,36 @@ public class Player2Movement : MonoBehaviour
         //If the player's z value is greater than the upperbound and less than the lower bound,
         //the player's z value will be readjusted accordingly so that they are still within the
         // z value range.
-        if (transform.position.z >= upperBound || transform.position.z <= lowerBound)
-        {
-            //If the z value is higher, lessen the z value by 1.
-            if (transform.position.z >= upperBound)
-            {
-                Vector3 v3 = new Vector3(1, 0, 0);
-                transform.Translate(v3);
+        // if (transform.position.z >= upperBound || transform.position.z <= lowerBound)
+        // {
+        //     //If the z value is higher, lessen the z value by 1.
+        //     if (transform.position.z >= upperBound)
+        //     {
+        //         Vector3 v3 = new Vector3(1, 0, 0);
+        //         transform.Translate(v3);
 
-            }
-            //If the z value is lower, increase the z value by 1.
-            else
-            {
+        //     }
+        //     //If the z value is lower, increase the z value by 1.
+        //     else
+        //     {
 
-                Vector3 v3 = new Vector3(-1, 0, 0);
-                transform.Translate(v3);
+        //         Vector3 v3 = new Vector3(-1, 0, 0);
+        //         transform.Translate(v3);
 
-            }
+        //     }
 
-        }
-        //If the player's z value is within the range, the player can move within it.
-        else
-        {
+        // }
+        // //If the player's z value is within the range, the player can move within it.
+        // else
+        // {
 
-            Vector2 v2 = movement.ReadValue<Vector2>();
-            Vector3 v3 = new Vector3(-v2.y, 0, 0); //convert to 3d space
-            transform.Translate(v3);
+        Vector2 v2 = movement.ReadValue<Vector2>();
+        Vector3 v3 = new Vector3(-v2.y, 0, 0); //convert to 3d space
+        transform.Translate(v3);
+        Vector3 pos = transform.position;
+        pos.z = Mathf.Clamp(pos.z, lowerBound, upperBound);
+        transform.position = pos;
 
-        }
     }
 }
+// }

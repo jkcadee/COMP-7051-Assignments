@@ -44,6 +44,15 @@ public partial class @Actions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CloseConsole"",
+                    ""type"": ""Button"",
+                    ""id"": ""d067c203-2cdd-4bd8-b332-1b31aa8ad177"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -68,6 +77,17 @@ public partial class @Actions : IInputActionCollection2, IDisposable
                     ""action"": ""RunCommand"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2028619-871e-4619-9fc3-559a47a0c9f5"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseConsole"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -78,6 +98,7 @@ public partial class @Actions : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_ToggleConsole = m_Player.FindAction("ToggleConsole", throwIfNotFound: true);
         m_Player_RunCommand = m_Player.FindAction("RunCommand", throwIfNotFound: true);
+        m_Player_CloseConsole = m_Player.FindAction("CloseConsole", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -139,12 +160,14 @@ public partial class @Actions : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_ToggleConsole;
     private readonly InputAction m_Player_RunCommand;
+    private readonly InputAction m_Player_CloseConsole;
     public struct PlayerActions
     {
         private @Actions m_Wrapper;
         public PlayerActions(@Actions wrapper) { m_Wrapper = wrapper; }
         public InputAction @ToggleConsole => m_Wrapper.m_Player_ToggleConsole;
         public InputAction @RunCommand => m_Wrapper.m_Player_RunCommand;
+        public InputAction @CloseConsole => m_Wrapper.m_Player_CloseConsole;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -160,6 +183,9 @@ public partial class @Actions : IInputActionCollection2, IDisposable
                 @RunCommand.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunCommand;
                 @RunCommand.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunCommand;
                 @RunCommand.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunCommand;
+                @CloseConsole.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCloseConsole;
+                @CloseConsole.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCloseConsole;
+                @CloseConsole.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCloseConsole;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -170,6 +196,9 @@ public partial class @Actions : IInputActionCollection2, IDisposable
                 @RunCommand.started += instance.OnRunCommand;
                 @RunCommand.performed += instance.OnRunCommand;
                 @RunCommand.canceled += instance.OnRunCommand;
+                @CloseConsole.started += instance.OnCloseConsole;
+                @CloseConsole.performed += instance.OnCloseConsole;
+                @CloseConsole.canceled += instance.OnCloseConsole;
             }
         }
     }
@@ -178,5 +207,6 @@ public partial class @Actions : IInputActionCollection2, IDisposable
     {
         void OnToggleConsole(InputAction.CallbackContext context);
         void OnRunCommand(InputAction.CallbackContext context);
+        void OnCloseConsole(InputAction.CallbackContext context);
     }
 }

@@ -14,9 +14,10 @@ public class PlayerConfigManager : MonoBehaviour
     public static PlayerConfigManager Instance {get; set;}
 
     private void Awake(){
-        if (Instance != null) {
+        if (Instance != null && this.playerConfigs.Count > 2) {
+            Destroy(gameObject);
             Debug.Log("SINGLETON - Trying to make another instance!");
-        } 
+        }
         else
         {
             Instance = this;
@@ -29,6 +30,10 @@ public class PlayerConfigManager : MonoBehaviour
         return playerConfigs;
     }
 
+    public void ClearPlayerConfigs(){
+        Destroy(gameObject);
+    }
+
     public void ReadyPlayer(int index){
         playerConfigs[index].IsReady = true;
         // if all players are ready
@@ -38,6 +43,9 @@ public class PlayerConfigManager : MonoBehaviour
     }
 
     public void HandlePlayerJoin(PlayerInput pi){
+        if (playerConfigs.Count > 2) {
+            playerConfigs = new List<PlayerConfig>();
+        }
         Debug.Log("Player Joined: " + pi.playerIndex);
         //check if any players aren't added
         if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex)){

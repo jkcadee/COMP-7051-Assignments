@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ComputerAI : MonoBehaviour
 {
-    private float upperBound = 20f;
-    private float lowerBound = -20f;
-    public float moveSpeed = 25f;
+    private float upperBound = 22f;
+    private float lowerBound = -22f;
+    public float moveSpeed = 20f;
 
     private GameObject ball;
     private Vector3 ballPosition;
@@ -26,40 +26,49 @@ public class ComputerAI : MonoBehaviour
         {
             ballPosition = ball.transform.localPosition;
 
-            if (transform.position.z >= upperBound || transform.position.z <= lowerBound)
+            // if (transform.position.z >= upperBound || transform.position.z <= lowerBound)
+            // {
+            //     //If the z value is higher, lessen the z value by 1.
+            //     if (transform.position.z >= upperBound)
+            //     {
+            //         Vector3 v3 = new Vector3(1, 0, 0);
+            //         transform.Translate(v3);
+
+            //     }
+            //     //If the z value is lower, increase the z value by 1.
+            //     else
+            //     {
+
+            //         Vector3 v3 = new Vector3(-1, 0, 0);
+            //         transform.Translate(v3);
+
+            //     }
+
+            // }
+            // else
+            // {
+            if (ballPosition.z > transform.localPosition.z)
             {
-                //If the z value is higher, lessen the z value by 1.
-                if (transform.position.z >= upperBound)
-                {
-                    Vector3 v3 = new Vector3(1, 0, 0);
-                    transform.Translate(v3);
 
-                }
-                //If the z value is lower, increase the z value by 1.
-                else
-                {
-
-                    Vector3 v3 = new Vector3(-1, 0, 0);
-                    transform.Translate(v3);
-
-                }
+                transform.localPosition += new Vector3(0, 0, +moveSpeed * Time.deltaTime);
+                Vector3 pos = transform.position;
+                pos.z = Mathf.Clamp(pos.z, lowerBound, upperBound);
+                transform.position = pos;
 
             }
-            else
+
+            if (ballPosition.z < transform.localPosition.z)
             {
-                if (transform.localPosition.z > lowerBound && ballPosition.z > transform.localPosition.z)
-                {
 
-                    transform.localPosition += new Vector3(0, 0, +moveSpeed * Time.deltaTime);
-                }
+                transform.localPosition -= new Vector3(0, 0, moveSpeed * Time.deltaTime);
+                Vector3 pos = transform.position;
+                pos.z = Mathf.Clamp(pos.z, lowerBound, upperBound);
+                transform.position = pos;
 
-                if (transform.localPosition.z < upperBound && ballPosition.z < transform.localPosition.z)
-                {
-
-                    transform.localPosition -= new Vector3(0, 0, moveSpeed * Time.deltaTime);
-                }
             }
 
         }
+
     }
 }
+// }
