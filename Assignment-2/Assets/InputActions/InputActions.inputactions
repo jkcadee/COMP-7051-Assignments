@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Noclip",
+                    "type": "Button",
+                    "id": "d55b5cb3-bfa7-4835-82ca-fa6e975e125b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -99,6 +108,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Looking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f32f5d57-a746-4a52-b8af-a3c7aca7e302",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Noclip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "294d4376-da67-46a3-a89c-4440dc6a4060",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Noclip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

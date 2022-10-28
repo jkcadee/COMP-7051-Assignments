@@ -44,6 +44,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Noclip"",
+                    ""type"": ""Button"",
+                    ""id"": ""d55b5cb3-bfa7-4835-82ca-fa6e975e125b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -123,6 +132,28 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Looking"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f32f5d57-a746-4a52-b8af-a3c7aca7e302"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Noclip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""294d4376-da67-46a3-a89c-4440dc6a4060"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Noclip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -133,6 +164,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Looking = m_Player.FindAction("Looking", throwIfNotFound: true);
+        m_Player_Noclip = m_Player.FindAction("Noclip", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -194,12 +226,14 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Looking;
+    private readonly InputAction m_Player_Noclip;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
         public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Looking => m_Wrapper.m_Player_Looking;
+        public InputAction @Noclip => m_Wrapper.m_Player_Noclip;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -215,6 +249,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Looking.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLooking;
                 @Looking.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLooking;
                 @Looking.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLooking;
+                @Noclip.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNoclip;
+                @Noclip.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNoclip;
+                @Noclip.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNoclip;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -225,6 +262,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Looking.started += instance.OnLooking;
                 @Looking.performed += instance.OnLooking;
                 @Looking.canceled += instance.OnLooking;
+                @Noclip.started += instance.OnNoclip;
+                @Noclip.performed += instance.OnNoclip;
+                @Noclip.canceled += instance.OnNoclip;
             }
         }
     }
@@ -233,5 +273,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnLooking(InputAction.CallbackContext context);
+        void OnNoclip(InputAction.CallbackContext context);
     }
 }
