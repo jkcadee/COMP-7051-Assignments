@@ -7,3 +7,13 @@ Assignment-1/.vscode/settings.json
 Assignment-1/Assembly-CSharp.csproj
 Assignment-1/Assignment-1.sln
 Assignment-1/.vsconfig
+
+/Assignment-2/Library/
+/Assignment-2/Logs/
+/Assignment-2/Temp/
+/Assignment-2/UserSettings/
+/Assignment-2/.vsconfig
+/Assignment-2/.vs/
+/Assignment-2/Assembly-CSharp.csproj
+/Assignment-2/Assignment-2.sln
+/Assignment-2/obj/
