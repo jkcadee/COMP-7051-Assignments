@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,9 +19,10 @@ public class EnemyAI : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         waypointIndex = 0;
 
-
-        for (int i = waypoints.Count; i < 2; i++) {
+        while(waypoints.Count < 2) {
             CretaeWaypoints();
+
+            waypoints = waypoints.Distinct().ToList();
         }
 
         UpdateDestination();
@@ -64,7 +66,7 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("X: " + randomXCord + "; " + "Z: " + randomZCord);
         Vector3 rayPosition = new Vector3(randomXCord, 20f, randomZCord);
         RaycastHit hit;
-        if (Physics.Raycast(rayPosition, Vector3.down, out hit, 19f))
+        if (Physics.Raycast(rayPosition, Vector3.down, out hit, 19.5f))
         {
 
             return false;
@@ -78,9 +80,11 @@ public class EnemyAI : MonoBehaviour
 
     void CretaeWaypoints()
     {
-        if (CheckEmptySpace()) ;
+        if (CheckEmptySpace()) {
         GameObject waypoint = new GameObject("Waypoint");
         waypoint.transform.position = new Vector3(randomXCord, 0.5f, randomZCord);
         waypoints.Add(waypoint.transform);
+        }
+
     }
 }
