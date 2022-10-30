@@ -14,11 +14,18 @@ public class MazeRenderer : MonoBehaviour
     [SerializeField]
     private Transform wallPrefab = null;
 
+    private Vector3 startCoords;
+    private Vector3 endCoords;
+
+    [SerializeField]
+    private GameObject player = null;
+
     // Start is called before the first frame update
     void Start()
     {
         var maze = MazeGenerator.Generate(width,height);
         Draw(maze, width, height);
+        Instantiate(player, startCoords, Quaternion.identity);
     }
 
     private void Draw(WallState[,] maze, int width, int height) {
@@ -28,6 +35,15 @@ public class MazeRenderer : MonoBehaviour
             {
                 var cell = maze[i,j];
                 var position = new Vector3(-width/2 + i, 0 ,-height/2 + j);
+
+                if (i == 0 && j == 0)
+                {
+                    startCoords = new Vector3(-width / 2 + i, 0, -height / 2 + j);
+                } else if (i == width - 1 && j == height - 1)
+                {
+                    endCoords = new Vector3(-width / 2 + i, 0, -height / 2 + j);
+                }
+
                 if (cell.HasFlag(WallState.UP))
                 {
                     var topWall = Instantiate(wallPrefab, transform) as Transform;
