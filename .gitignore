@@ -2,12 +2,15 @@
 /Library/
 /Temp/
 /UserSettings/
+Library/
+Temp/
+Logs/
+UserSettings/
 
 Assignment-1/.vscode/settings.json
 Assignment-1/Assembly-CSharp.csproj
 Assignment-1/Assignment-1.sln
 Assignment-1/.vsconfig
-
 /Assignment-2/Library/
 /Assignment-2/Logs/
 /Assignment-2/Temp/
@@ -20,4 +23,7 @@ Assignment-1/.vsconfig
 Assignment-2/.vscode/settings.json
 Assignment-2/Assembly-CSharp.csproj
 Assignment-2/Assignment-1.sln
-Assignment-2/.vsconfig
+Assignment-2/Assembly-CSharp.csproj
+Assignment-2/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
+Assignment-2/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache
+Assignment-2/Assembly-CSharp.csproj
