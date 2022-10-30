@@ -44,21 +44,42 @@ public static class MazeGenerator
             default: return WallState.LEFT; // just to make the function work
         }
     }
-    private static WallState[,] ApplyRecursiveBackTracker(WallState[,] maze, int width, int height)
+
+    private static WallState[,] RemoveRandomNeighbour(List<Neighbour> neighbours, WallState[,] maze, Position current, System.Random rng)
     {
+        var randIndex = rng.Next(0,neighbours.Count);
+        var randomNeighbour = neighbours[randIndex];
+
+        var neighbourPosition = randomNeighbour.Position;
+        //remove shared wall
+        maze[current.X, current.Y] &= ~randomNeighbour.SharedWall;
+        //remove opposite wall
+        maze[neighbourPosition.X, neighbourPosition.Y] &= ~GetOppositeWall(randomNeighbour.SharedWall);
+
+        maze[neighbourPosition.X, neighbourPosition.Y] |= WallState.VISITED;
+        return maze;
+    }
+    private static WallState[,] ApplyRecursiveBackTracker(WallState[,] maze, int width, int height)
+    {   
+        Position finish = new Position { X=0, Y=0};
+        Position start = new Position { X=0, Y=0};
         var rng = new System.Random();
         var positionStack = new Stack<Position>();
         //make a random position
         var position = new Position { X = rng.Next(0,width), Y = rng.Next(0,height)};
         //mark spot on maze as visited
         maze[position.X,position.Y] |= WallState.VISITED; // 1000 1111
+        start = position;
         positionStack.Push(position);
-
+        
+        var current = start;
         while (positionStack.Count > 0)
         {
-            var current = positionStack.Pop();
+            
+            current = positionStack.Pop();
             var neighbours = GetUnvisitedNeighbours(current,maze, width, height);
 
+            
             if(neighbours.Count > 0)
             {
                 positionStack.Push(current);
@@ -76,7 +97,63 @@ public static class MazeGenerator
 
                 positionStack.Push(neighbourPosition);
             }
+
+            
         }
+        finish = current;
+        
+        // //making exit
+        // if (current.Y == 0){
+        //     maze[current.X, current.Y] &= ~WallState.UP;
+        // } 
+        // if (current.X == width - 1) {
+        //     maze[current.X, current.Y] &= ~WallState.LEFT;
+        // }
+        // if (current.X == 0) {
+        //     maze[current.X, current.Y] &= ~WallState.RIGHT;
+        // } 
+        // if (current.Y == height - 1) {
+        //     maze[current.X, current.Y] &= ~WallState.DOWN;
+        // }
+
+        // if(current.X < width - 1 || current.Y < height - 1)
+        // {
+        //     maze[width - 1, height -1] &= ~maze[width - 1, 0];
+        // }
+        // Debug.Log(maze[current.X, current.Y]);
+        // maze[current.X, current.Y] |= WallState.VISITED;
+        maze = MakeDoor(maze, width,height,current, true);
+        maze = MakeDoor(maze, width,height,start, false);
+        return maze;
+    }
+
+    private static WallState[,] MakeDoor(WallState[,] maze, int width, int height, Position current, bool isExit)
+    {
+        //Debug.Log(current.X + " " + current.Y);
+        //making exit
+        // if (current.Y == 0){
+        //     maze[current.X, current.Y] &= ~WallState.UP;
+        // } 
+        // if (current.X == width - 1) {
+        //     maze[current.X, current.Y] &= ~WallState.LEFT;
+        // }
+        // if (current.X == 0) {
+        //     maze[current.X, current.Y] &= ~WallState.RIGHT;
+        // } 
+        // if (current.Y == height - 1) {
+        //     maze[current.X, current.Y] &= ~WallState.DOWN;
+        // }
+
+        if(isExit)
+        {
+            //top right exit default
+            maze[width - 1, height -1] &= ~WallState.UP;
+        } else {
+            //bottom left entrace default
+            maze[0, 0] &= ~WallState.DOWN;
+        }
+        Debug.Log(maze[current.X, current.Y]);
+        maze[current.X, current.Y] |= WallState.VISITED;
         return maze;
     }
     private static List<Neighbour> GetUnvisitedNeighbours(Position p, WallState[,] maze , int width, int height)
