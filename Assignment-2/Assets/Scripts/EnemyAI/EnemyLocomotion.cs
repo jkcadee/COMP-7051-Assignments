@@ -9,19 +9,15 @@ public class EnemyLocomotion : MonoBehaviour
     public Vector3 currentVelocity;
     private float yInput;
 
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
 
     // Update is called once per frame
     void Update()
     {
+                animator = GetComponent<Animator>();
         currentVelocity = GetComponent<Rigidbody>().velocity;
         if (currentVelocity.z > 0) {
             yInput = 1f;
         }
-        Debug.Log("CURRENT Y INPUT: " + yInput);
         animator.SetFloat("InputX", 0f);
         animator.SetFloat("InputY", yInput);
     }

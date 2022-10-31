@@ -15,10 +15,10 @@ public class NavMeshBaker : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        maze = GameObject.Find("Maze");
-
+        maze = GameObject.Find("MazeRenderer");
+        Debug.Log("MAZE OBJECT:" + maze);
         foreach (Transform wall in maze.transform) {
             foreach (Transform quad in wall) {
             navSurface = quad.gameObject.AddComponent<NavMeshSurface>() as NavMeshSurface;
