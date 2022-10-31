@@ -17,6 +17,9 @@ public class MazeRenderer : MonoBehaviour
     private Vector3 startCoords;
     private Vector3 endCoords;
 
+    private bool startFlag = false;
+    private bool endFlag = false;
+
     [SerializeField]
     private GameObject player = null;
     public GameObject enemy;
@@ -39,13 +42,15 @@ public class MazeRenderer : MonoBehaviour
                 var cell = maze[i, j];
                 var position = new Vector3(-width / 2 + i, 0, -height / 2 + j);
 
-                if (i == 0 && j == 0)
+                if (cell.HasFlag(WallState.ENTRANCE) && !startFlag)
                 {
-                    startCoords = new Vector3(-width / 2 + i, 0, -height / 2 + j);
+                    startCoords = new Vector3(-width / 2 + i, 0.1f, -height / 2 + j);
+                    startFlag = true;
                 }
-                else if (i == width - 1 && j == height - 1)
+                else if (cell.HasFlag(WallState.EXIT) && !endFlag)
                 {
-                    endCoords = new Vector3(-width / 2 + i, 0, -height / 2 + j);
+                    endCoords = new Vector3(-width / 2 + i, 0.1f, -height / 2 + j);
+                    endFlag = true;
                 }
 
                 if (cell.HasFlag(WallState.UP))
