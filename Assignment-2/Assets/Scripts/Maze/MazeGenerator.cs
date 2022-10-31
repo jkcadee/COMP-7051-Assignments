@@ -15,8 +15,10 @@ public enum WallState
 
     DOWN = 8, //1000
 
-    VISITED = 128 // 1000 0000
+    VISITED = 128, // 1000 0000
 
+    ENTRANCE = 256,
+    EXIT = 512,
 }
 
 public struct Position 
@@ -115,14 +117,25 @@ public static class MazeGenerator
         }else if(current.X <= width - 1 && current.Y <= height - 1 && isExit){
             Debug.Log("Made default exit");
             //top right exit default
-            maze[width - 1, height -1] &= ~WallState.UP;
+            maze[width - 1, height - 1] &= ~WallState.UP;
+            maze[width - 1, height - 1] |= WallState.EXIT;
         } else if (current.X <= width - 1 && current.Y <= height - 1 && !isExit) {
             //bottom left entrace default
             Debug.Log("Made default entrance");
             maze[0, 0] &= ~WallState.DOWN;
+            maze[0, 0] |= WallState.ENTRANCE;
         }
         Debug.Log(maze[current.X, current.Y]);
         maze[current.X, current.Y] |= WallState.VISITED;
+
+        if (isExit)
+        {
+            maze[current.X, current.Y] |= WallState.EXIT;
+        } else
+        {
+            maze[current.X, current.Y] |= WallState.ENTRANCE;
+        }
+
         return maze;
     }
     private static List<Neighbour> GetUnvisitedNeighbours(Position p, WallState[,] maze , int width, int height)
