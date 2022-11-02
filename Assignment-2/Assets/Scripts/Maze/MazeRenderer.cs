@@ -148,6 +148,7 @@ public class MazeRenderer : MonoBehaviour
         deActivatePopup();
         GameObject playercharacter = GameObject.FindWithTag("Player");
         playercharacter.GetComponent<Rigidbody>().transform.position = startCoords;
+        playercharacter.GetComponent<Rigidbody>().transform.rotation = Quaternion.identity;
         GameObject.FindWithTag("Player").GetComponent<OnTriggerStayEvent>().setColTag("");
     }
 
