@@ -146,14 +146,15 @@ public class MazeRenderer : MonoBehaviour
     {
 
         Debug.Log("Position Reset");
+        deActivatePopup();
         GameObject playercharacter = GameObject.FindWithTag("Player");
         playercharacter.GetComponent<Rigidbody>().transform.position = startCoords;
-
+        GameObject.FindWithTag("Player").GetComponent<OnTriggerStayEvent>().setColTag("");
     }
 
     private void DoReset(InputAction.CallbackContext obj)
     {
-        Debug.Log("Reset"); //called when jump performed
+        Debug.Log("Reset");
         ResetPosition();
     }
 
