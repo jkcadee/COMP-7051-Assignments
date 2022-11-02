@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MazeRenderer : MonoBehaviour
 {
@@ -24,12 +25,21 @@ public class MazeRenderer : MonoBehaviour
     private GameObject player = null;
     public GameObject enemy;
 
+    [SerializeField]
+    private GameObject goalpost = null;
+
+    public GameObject popUp;
+    private InputActions inputActions;
+
     // Start is called before the first frame update
     void Awake()
     {
         var maze = MazeGenerator.Generate(width, height);
         Draw(maze, width, height);
         Instantiate(player, startCoords, Quaternion.identity);
+        Instantiate(goalpost, endCoords, Quaternion.identity);
+        StartCoroutine(SpawnEnemy());
+        deActivatePopup();
         StartCoroutine(SpawnEnemy());
     }
 
@@ -97,7 +107,11 @@ public class MazeRenderer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        string playercollidertag = GameObject.FindWithTag("Player").GetComponent<OnTriggerStayEvent>().getColTag();
+        if (playercollidertag == "Goal")
+        {
+            GameEnd();
+        }
     }
 
     IEnumerator SpawnEnemy()
@@ -106,5 +120,45 @@ public class MazeRenderer : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Instantiate(enemy, endCoords, Quaternion.identity);
 
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Player.Reset.performed += DoReset;
+        inputActions.Player.Reset.Enable();
+    }
+
+    private void activatePopup()
+    {
+
+        popUp.SetActive(true);
+
+    }
+
+    private void deActivatePopup()
+    {
+
+        popUp.SetActive(false);
+
+    }
+
+    public void ResetPosition()
+    {
+
+        Debug.Log("Position Reset");
+        GameObject playercharacter = GameObject.FindWithTag("Player");
+        playercharacter.GetComponent<Rigidbody>().transform.position = startCoords;
+
+    }
+
+    private void DoReset(InputAction.CallbackContext obj)
+    {
+        Debug.Log("Reset"); //called when jump performed
+        ResetPosition();
+    }
+
+    private void GameEnd() {
+        Debug.Log("Game End");
+        activatePopup();
     }
 }
