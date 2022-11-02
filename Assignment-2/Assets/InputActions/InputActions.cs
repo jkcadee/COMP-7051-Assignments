@@ -167,7 +167,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7dee38e5-d82e-4f96-888f-c64c1ef775ef"",
-                    ""path"": ""<DaydreamController>/home"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
