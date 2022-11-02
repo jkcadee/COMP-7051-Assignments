@@ -114,16 +114,22 @@ public static class MazeGenerator
         } else if (current.Y == height - 1 && current.X < width - 1) {
             // if on the very top but within width
             maze[current.X, current.Y] &= ~WallState.UP;
-        }else if(current.X <= width - 1 && current.Y <= height - 1 && isExit){
+        } else if(current.X <= width - 1 && current.Y <= height - 1 && isExit){
             Debug.Log("Made default exit");
             //top right exit default
             maze[width - 1, height - 1] &= ~WallState.UP;
             maze[width - 1, height - 1] |= WallState.EXIT;
+
+            maze[current.X, current.Y] |= WallState.VISITED;
+            return maze;
         } else if (current.X <= width - 1 && current.Y <= height - 1 && !isExit) {
             //bottom left entrace default
             Debug.Log("Made default entrance");
             maze[0, 0] &= ~WallState.DOWN;
             maze[0, 0] |= WallState.ENTRANCE;
+
+            maze[current.X, current.Y] |= WallState.VISITED;
+            return maze;
         }
         Debug.Log(maze[current.X, current.Y]);
         maze[current.X, current.Y] |= WallState.VISITED;
