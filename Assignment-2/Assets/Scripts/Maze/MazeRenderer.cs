@@ -40,6 +40,7 @@ public class MazeRenderer : MonoBehaviour
         Instantiate(goalpost, endCoords, Quaternion.identity);
         StartCoroutine(SpawnEnemy());
         deActivatePopup();
+        StartCoroutine(SpawnEnemy());
     }
 
     private void Draw(WallState[,] maze, int width, int height)
