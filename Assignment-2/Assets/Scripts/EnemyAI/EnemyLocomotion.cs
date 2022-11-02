@@ -9,15 +9,18 @@ public class EnemyLocomotion : MonoBehaviour
     public Vector3 currentVelocity;
     private float yInput;
     private Vector3 resetPoint;
+    private Vector3 resetRotation;
 
     public void ResetPosition()
     {
         transform.position = resetPoint;
+        transform.localEulerAngles = resetRotation;
     }
 
     private void Start()
     {
         resetPoint = transform.position;
+        resetRotation = transform.localEulerAngles;
     }
 
     // Update is called once per frame
