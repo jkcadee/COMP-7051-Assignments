@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MazeRenderer : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class MazeRenderer : MonoBehaviour
         Instantiate(goalpost, endCoords, Quaternion.identity);
         StartCoroutine(SpawnEnemy());
         deActivatePopup();
+        inputActions = new InputActions();
     }
 
     private void Draw(WallState[,] maze, int width, int height)
@@ -103,6 +105,7 @@ public class MazeRenderer : MonoBehaviour
             }
         }
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -123,7 +126,7 @@ public class MazeRenderer : MonoBehaviour
 
     private void OnEnable()
     {
-        inputActions.Player.Reset.performed += DoReset;
+        inputActions.Player.Reset.performed += ResetPosition;
         inputActions.Player.Reset.Enable();
     }
 
@@ -141,9 +144,13 @@ public class MazeRenderer : MonoBehaviour
 
     }
 
-    public void ResetPosition()
+    void ResetPosition(InputAction.CallbackContext obj)
     {
+        ActivateReset();
+    }
 
+    public void ActivateReset()
+    {
         Debug.Log("Position Reset");
         deActivatePopup();
         GameObject playercharacter = GameObject.FindWithTag("Player");
@@ -152,14 +159,16 @@ public class MazeRenderer : MonoBehaviour
         GameObject.FindWithTag("Player").GetComponent<OnTriggerStayEvent>().setColTag("");
     }
 
-    private void DoReset(InputAction.CallbackContext obj)
+    public void DoReset()
     {
         Debug.Log("Reset");
-        ResetPosition();
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     private void GameEnd() {
         Debug.Log("Game End");
         activatePopup();
+        GameObject.FindWithTag("Player").GetComponent<AT_CharMovement>().enabled = false;
     }
 }

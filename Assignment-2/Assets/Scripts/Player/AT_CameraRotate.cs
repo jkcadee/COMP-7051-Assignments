@@ -27,6 +27,11 @@ public class AT_CameraRotate : MonoBehaviour
         looking.Disable();
     }
 
+    public void ResetRotation()
+    {
+        rotation = new Vector3(0, 0, 0);
+    }
+
     void Update()
     {
         float lookMagnitude = Input.GetAxis("Mouse Y") * speed;

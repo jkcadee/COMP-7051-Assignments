@@ -8,7 +8,20 @@ public class EnemyLocomotion : MonoBehaviour
     // Start is called before the first frame update
     public Vector3 currentVelocity;
     private float yInput;
+    private Vector3 resetPoint;
+    private Vector3 resetRotation;
 
+    public void ResetPosition()
+    {
+        transform.position = resetPoint;
+        transform.localEulerAngles = resetRotation;
+    }
+
+    private void Start()
+    {
+        resetPoint = transform.position;
+        resetRotation = transform.localEulerAngles;
+    }
 
     // Update is called once per frame
     void Update()

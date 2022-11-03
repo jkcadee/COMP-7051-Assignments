@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class OnTriggerStayEvent : MonoBehaviour
 {
+    /** CODE WAS SOURCED FROM THE FOLLOWING:
+    https://answers.unity.com/questions/867859/how-to-detect-ontriggerenter-on-another-gameobject.html
+    */
     private string colTag;
 
     void Start()
