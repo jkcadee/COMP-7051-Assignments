@@ -40,7 +40,6 @@ public class MazeRenderer : MonoBehaviour
         Instantiate(goalpost, endCoords, Quaternion.identity);
         StartCoroutine(SpawnEnemy());
         deActivatePopup();
-        StartCoroutine(SpawnEnemy());
     }
 
     private void Draw(WallState[,] maze, int width, int height)
@@ -149,6 +148,7 @@ public class MazeRenderer : MonoBehaviour
         deActivatePopup();
         GameObject playercharacter = GameObject.FindWithTag("Player");
         playercharacter.GetComponent<Rigidbody>().transform.position = startCoords;
+        playercharacter.GetComponent<Rigidbody>().transform.rotation = Quaternion.identity;
         GameObject.FindWithTag("Player").GetComponent<OnTriggerStayEvent>().setColTag("");
     }
 
