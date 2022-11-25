@@ -156,14 +156,7 @@ public class MazeRenderer : MonoBehaviour
         GameObject playercharacter = GameObject.FindWithTag("Player");
         playercharacter.GetComponent<Rigidbody>().transform.position = startCoords;
         playercharacter.GetComponent<Rigidbody>().transform.rotation = Quaternion.identity;
-        playercharacter.GetComponent<OnTriggerStayEvent>().setColTag("");
-        playercharacter.GetComponent<AT_CharMovement>().enabled = true;
-
-        AT_CameraRotate mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<AT_CameraRotate>();
-        mainCamera.ResetRotation();
-
-        EnemyLocomotion enemy = GameObject.FindWithTag("Enemy").GetComponent<EnemyLocomotion>();
-        enemy.ResetPosition();
+        GameObject.FindWithTag("Player").GetComponent<OnTriggerStayEvent>().setColTag("");
     }
 
     public void DoReset()
