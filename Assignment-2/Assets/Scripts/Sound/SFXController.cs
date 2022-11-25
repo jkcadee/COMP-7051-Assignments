@@ -14,6 +14,7 @@ public class SFXController : MonoBehaviour
             https://answers.unity.com/questions/1320031/having-multiple-audio-sources-in-a-single-object.html
     */
 
+    //Represents the single instance of this static class.
     public static SFXController Instance;
 
     /** 
@@ -30,14 +31,6 @@ public class SFXController : MonoBehaviour
 
         Instance = this;
 
-        if (gameObject.GetComponents<AudioSource>().Length > 0)
-        {
-            Debug.Log("There is some audio");
-        }
-        else {
-            Debug.Log("There is no audio");
-        }
-
     }
 
     /** Takes in an integer, and plays the sound that matches the index.
@@ -51,14 +44,14 @@ public class SFXController : MonoBehaviour
             if (i < gameObject.GetComponents<AudioSource>().Length)
             {
                 gameObject.GetComponents<AudioSource>()[i].Play();
-                Debug.Log("Search is Valid");
+                //Debug.Log("Search is Valid");
             }
             else {
-                Debug.Log("Search value is out of bounds");
+                //Debug.Log("Search value is out of bounds");
             }
         }
         else {
-            Debug.Log("Search value cannot be zero");
+            //Debug.Log("Search value cannot be zero");
         }
     }
 
@@ -74,16 +67,16 @@ public class SFXController : MonoBehaviour
             if (i < gameObject.GetComponents<AudioSource>().Length)
             {
                 gameObject.GetComponents<AudioSource>()[i].Stop();
-                Debug.Log("Search is Valid");
+                //Debug.Log("Search is Valid");
             }
             else
             {
-                Debug.Log("Search value is out of bounds");
+                //Debug.Log("Search value is out of bounds");
             }
         }
         else
         {
-            Debug.Log("Search value cannot be zero");
+            //Debug.Log("Search value cannot be zero");
         }
     }
 
