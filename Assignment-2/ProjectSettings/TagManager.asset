@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Maze
   - Goal
+  - Wall
   layers:
   - Default
   - TransparentFX

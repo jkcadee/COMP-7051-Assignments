@@ -61,5 +61,30 @@ public class SFXController : MonoBehaviour
             Debug.Log("Search value cannot be zero");
         }
     }
-    
+
+    /** Takes in an integer, and plays the sound that matches the index.
+     @param i
+    */
+
+    public void StopSound(int i)
+    {
+
+        if (i >= 0)
+        {
+            if (i < gameObject.GetComponents<AudioSource>().Length)
+            {
+                gameObject.GetComponents<AudioSource>()[i].Stop();
+                Debug.Log("Search is Valid");
+            }
+            else
+            {
+                Debug.Log("Search value is out of bounds");
+            }
+        }
+        else
+        {
+            Debug.Log("Search value cannot be zero");
+        }
+    }
+
 }
