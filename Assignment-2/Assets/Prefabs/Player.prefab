@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4619847596795135362}
   - component: {fileID: 4619847596795135366}
   - component: {fileID: 4619847596795135364}
+  - component: {fileID: 3381194531680572253}
   - component: {fileID: 4619847596795135367}
   - component: {fileID: 4156125524053681208}
   - component: {fileID: 4750081226047899345}
@@ -133,6 +134,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &3381194531680572253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619847596795135389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d63bf4230d5bca4f98296110dbf2eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4619847596795135367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 1.5
   maxSpeed: 7.5
+  isSoundPlaying: 0
 --- !u!114 &4156125524053681208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,21 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5714dc360c93d545b6ef8ec3e5ccf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onTriggerEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &4619847597222183239
 GameObject:
   m_ObjectHideFlags: 0
