@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 7899688020913565529}
   - component: {fileID: 7899688020913565526}
   - component: {fileID: 7899688020913565523}
+  - component: {fileID: 7723394615327068596}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -330,6 +331,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &7723394615327068596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7900125941411146236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &7900143477880979020
 GameObject:
   m_ObjectHideFlags: 0
