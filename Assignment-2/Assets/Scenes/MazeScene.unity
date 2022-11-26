@@ -622,6 +622,7 @@ MonoBehaviour:
   height: 5
   size: 1
   wallPrefab: {fileID: 4285139846424278882, guid: ec5846d856bfc484e88e142fdb58d859, type: 3}
+  pongDoorPrefab: {fileID: 961432847975102190, guid: c71007f0a00698b40b7ba3b76c2412fa, type: 3}
   player: {fileID: 4619847596795135389, guid: 522d8a1aa85453545a7fe9c2b433b8be, type: 3}
   enemy: {fileID: 7900125941411146236, guid: d9b81acd6f0bc6e44af813ce5fdb35dc, type: 3}
   goalpost: {fileID: 2587433759383123091, guid: 18d5851e66d84074d809df48789b16ab, type: 3}
@@ -1097,6 +1098,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac172d35271f8ac4c84acc0a7da91cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelMusic: {fileID: 0}
+  volume: 0
+  isOn: 0
+  maxVolume: 0
+  minVolume: 0
+  fogModeActivated: 0
 --- !u!4 &1939526494
 Transform:
   m_ObjectHideFlags: 0

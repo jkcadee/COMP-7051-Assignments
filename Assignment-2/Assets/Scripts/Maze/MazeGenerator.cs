@@ -15,6 +15,8 @@ public enum WallState
 
     DOWN = 8, //1000
 
+    PONGDOOR = 64,
+
     VISITED = 128, // 1000 0000
 
     ENTRANCE = 256,
@@ -60,6 +62,7 @@ public static class MazeGenerator
         start = position;
         // make entrance
         maze = MakeDoor(maze, width,height,start, false);
+        maze = MakePongDoor(maze, width, height, start);
         positionStack.Push(position);
         
         var current = start;
@@ -95,6 +98,36 @@ public static class MazeGenerator
             
         }
         maze = MakeDoor(maze, width,height,finish, true);
+        return maze;
+    }
+
+    private static WallState[,] MakePongDoor(WallState[,] maze, int width, int height, Position current)
+    {
+        if (current.Y == 0 && current.X < width - 1)
+        {
+            // if on the bottom and within width
+            maze[current.X, current.Y] &= ~WallState.DOWN;
+        }
+        else if (current.X == width - 1 && current.Y < height - 1)
+        {
+            // if on the very right but within height
+            maze[current.X, current.Y] &= ~WallState.RIGHT;
+        }
+        else if (current.X == 0 && current.Y < height - 1)
+        {
+            // if on the very left but within height
+            maze[current.X, current.Y] &= ~WallState.LEFT;
+        }
+        else if (current.Y == height - 1 && current.X < width - 1)
+        {
+            // if on the very top but within width
+            maze[current.X, current.Y] &= ~WallState.UP;
+        }
+        
+        Debug.Log(maze[current.X, current.Y]);
+        maze[current.X, current.Y] |= WallState.PONGDOOR;
+        maze[current.X, current.Y] |= WallState.VISITED;
+
         return maze;
     }
 
