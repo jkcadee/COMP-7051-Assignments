@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -34,15 +34,34 @@ public class MazeRenderer : MonoBehaviour
 
     public GameObject popUp;
     private InputActions inputActions;
+    public GameController gameController;
 
     // Start is called before the first frame update
     void Awake()
     {
         var maze = MazeGenerator.Generate(width, height);
         Draw(maze, width, height);
-        Instantiate(player, startCoords, Quaternion.identity);
+        gameController.LoadPlayerPos();
+        gameController.LoadEnemyPos();
+        if (GameController.playerPos != null)
+        {
+            Instantiate(player, GameController.playerPos, Quaternion.identity);
+        } else
+        {
+            Instantiate(player, startCoords, Quaternion.identity);
+        }
+
         Instantiate(goalpost, endCoords, Quaternion.identity);
-        StartCoroutine(SpawnEnemy());
+
+        if (GameController.enemyPos != null)
+        {
+            StartCoroutine(SpawnEnemy(GameController.enemyPos));
+        }
+        else
+        {
+            StartCoroutine(SpawnEnemy(endCoords));
+        }
+
         deActivatePopup();
         inputActions = new InputActions();
     }
@@ -125,11 +144,11 @@ public class MazeRenderer : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnEnemy()
+    IEnumerator SpawnEnemy(Vector3 coords)
     {
 
         yield return new WaitForSeconds(1f);
-        Instantiate(enemy, endCoords, Quaternion.identity);
+        Instantiate(enemy, coords, Quaternion.identity);
 
     }
 
