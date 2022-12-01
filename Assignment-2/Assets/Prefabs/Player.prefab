@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4156125524053681208}
   - component: {fileID: 3132751266281127861}
   - component: {fileID: 4750081226047899345}
+  - component: {fileID: 2347189996320284583}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -202,6 +203,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5714dc360c93d545b6ef8ec3e5ccf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2347189996320284583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619847596795135389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52bf538d12370834aa5faa7a320f1fd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!1 &4619847597222183239
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +229,7 @@ GameObject:
   - component: {fileID: 4619847597222183236}
   - component: {fileID: 4619847597222183243}
   - component: {fileID: 7168545569047065974}
+  - component: {fileID: 45485454541416798}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -260,8 +275,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.12
-  far clip plane: 1000
+  near clip plane: 0.3
+  far clip plane: 30
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -273,7 +288,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -316,3 +331,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 4619847596795135389}
   ballPrefab: {fileID: 6680603051923182165, guid: ef10aa34f82f52d429ac1e8a72ecd824, type: 3}
+--- !u!114 &45485454541416798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619847597222183239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74ca3f9cd2c6be4d8d1f3b23bc30b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: ae14bef8910daa7428938ded36ff8be4, type: 2}
