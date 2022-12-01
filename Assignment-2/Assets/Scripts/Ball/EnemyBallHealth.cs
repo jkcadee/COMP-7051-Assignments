@@ -9,6 +9,8 @@ public class EnemyBallHealth : MonoBehaviour
     float purgatoryTimeout = 0;
     float y;
     public GameObject enemyPrefab;
+    public AudioSource enemyDeath;
+    public AudioSource enemySpawn;
 
     private void OnCollisionEnter(Collision other)
     {
@@ -21,6 +23,8 @@ public class EnemyBallHealth : MonoBehaviour
                 y = transform.position.y;
                 GetComponent<NavMeshAgent>().enabled = false;
                 transform.position = new Vector3(1000, -100, 1000);
+                enemyDeath.Play();
+                Debug.Log("ENEMY DYING!!!");
             }
         }
     }
@@ -33,12 +37,16 @@ public class EnemyBallHealth : MonoBehaviour
         }
         else if (purgatoryTimeout < 0)
         {
+
             purgatoryTimeout = 0;
             int x = Random.Range(-2, 2);
             int z = Random.Range(-2, 2);
+            enemySpawn.Play();
             GameObject enemy = Instantiate(enemyPrefab, new Vector3(x, y, z), Quaternion.identity);
+
             enemy.GetComponent<NavMeshAgent>().enabled = true;
             Destroy(gameObject);
+            
         }
     }
 }
