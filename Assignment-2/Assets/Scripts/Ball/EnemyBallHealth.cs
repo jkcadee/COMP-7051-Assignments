@@ -37,6 +37,7 @@ public class EnemyBallHealth : MonoBehaviour
             int x = Random.Range(-2, 2);
             int z = Random.Range(-2, 2);
             GameObject enemy = Instantiate(enemyPrefab, new Vector3(x, y, z), Quaternion.identity);
+            enemy.GetComponent<NavMeshAgent>().enabled = true;
             Destroy(gameObject);
         }
     }
