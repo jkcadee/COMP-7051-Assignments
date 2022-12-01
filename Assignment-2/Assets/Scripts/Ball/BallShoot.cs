@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class BallShoot : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class BallShoot : MonoBehaviour
     public GameObject ballPrefab;
     GameObject ball;
     int score = 0;
+    GameObject scoreCounter;
 
     void IncreaseScore()
     {
         score++;
+        scoreCounter.GetComponent<TextMeshProUGUI>().text = "Score: " + score;
     }
 
     void ShootBall(InputAction.CallbackContext _)
@@ -34,6 +37,11 @@ public class BallShoot : MonoBehaviour
     {
         ia = new InputActions();
         shoot = ia.Player.Shoot;
+    }
+
+    private void Start()
+    {
+        scoreCounter = GameObject.Find("Score");
     }
 
     private void OnEnable()
