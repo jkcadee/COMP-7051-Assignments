@@ -62,6 +62,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""b301fe28-34bd-44ce-a517-29a86468e8c5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -185,6 +194,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Reset"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb76aae8-64e2-44e8-a52e-bcf0d577dbc0"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -197,6 +217,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Player_Looking = m_Player.FindAction("Looking", throwIfNotFound: true);
         m_Player_Noclip = m_Player.FindAction("Noclip", throwIfNotFound: true);
         m_Player_Reset = m_Player.FindAction("Reset", throwIfNotFound: true);
+        m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -260,6 +281,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Looking;
     private readonly InputAction m_Player_Noclip;
     private readonly InputAction m_Player_Reset;
+    private readonly InputAction m_Player_Shoot;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -268,6 +290,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Looking => m_Wrapper.m_Player_Looking;
         public InputAction @Noclip => m_Wrapper.m_Player_Noclip;
         public InputAction @Reset => m_Wrapper.m_Player_Reset;
+        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -289,6 +312,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Reset.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReset;
                 @Reset.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReset;
                 @Reset.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReset;
+                @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -305,6 +331,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Reset.started += instance.OnReset;
                 @Reset.performed += instance.OnReset;
                 @Reset.canceled += instance.OnReset;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
             }
         }
     }
@@ -315,5 +344,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnLooking(InputAction.CallbackContext context);
         void OnNoclip(InputAction.CallbackContext context);
         void OnReset(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }

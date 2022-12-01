@@ -668,7 +668,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: 0
-  playerPos: {x: 0, y: 0, z: 0}
   player: {fileID: 4619847596795135389, guid: 522d8a1aa85453545a7fe9c2b433b8be, type: 3}
   enemy: {fileID: 7900125941411146236, guid: d9b81acd6f0bc6e44af813ce5fdb35dc, type: 3}
 --- !u!4 &1695993078

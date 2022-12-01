@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 4619847597222183237}
   - component: {fileID: 4619847597222183236}
   - component: {fileID: 4619847597222183243}
+  - component: {fileID: 7168545569047065974}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -301,3 +302,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   lookRange: 45
+--- !u!114 &7168545569047065974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619847597222183239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa7e646319d9574a97de57620e1f680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 4619847596795135389}
+  ballPrefab: {fileID: 6680603051923182165, guid: ef10aa34f82f52d429ac1e8a72ecd824, type: 3}
