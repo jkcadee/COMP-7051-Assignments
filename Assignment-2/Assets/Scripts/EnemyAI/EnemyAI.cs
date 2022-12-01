@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -13,9 +14,13 @@ public class EnemyAI : MonoBehaviour
     private int randomXCord;
     private int randomZCord;
 
+    private GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         _agent = GetComponent<NavMeshAgent>();
         waypointIndex = 0;
 
@@ -29,12 +34,9 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-
-
     // Update is called once per frame
     void Update()
     {
-
 
         if (Vector3.Distance(transform.position, target) < 1)
         {
@@ -86,5 +88,15 @@ public class EnemyAI : MonoBehaviour
         waypoints.Add(waypoint.transform);
         }
 
+    }
+
+    void OnCollisionEnter(Collision collision) {
+        Debug.Log("COLLIDED WITH: " + collision.gameObject);
+        Debug.Log("PLAYER OBJECT: " + player);
+        if (collision.gameObject == player) {
+            Destroy(player);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
     }
 }

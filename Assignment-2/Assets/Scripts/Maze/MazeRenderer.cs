@@ -35,6 +35,7 @@ public class MazeRenderer : MonoBehaviour
     public GameObject popUp;
     private InputActions inputActions;
     public GameController gameController;
+    private string playercollidertag;
 
     // Start is called before the first frame update
     void Awake()
@@ -137,7 +138,10 @@ public class MazeRenderer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string playercollidertag = GameObject.FindWithTag("Player").GetComponent<OnTriggerStayEvent>().getColTag();
+        if (GameObject.FindGameObjectWithTag("Player") != null) {
+            playercollidertag = GameObject.FindWithTag("Player").GetComponent<OnTriggerStayEvent>().getColTag();
+        }
+        
         if (playercollidertag == "Goal")
         {
             GameEnd();
