@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScoreSystem : MonoBehaviour
 {
@@ -119,11 +120,10 @@ public class ScoreSystem : MonoBehaviour
 
         //Change the text to show who wins.
         win_text.text = result + " Wins!";
-        //Show the win screen.
-        Enable_Win_Screen();
         //Stop the ball.
         stop_ball();
-        //PlayerConfigManager.Instance.ClearPlayerConfigs();
+        SceneManager.LoadScene("MazeScene");
+        PlayerConfigManager.Instance.ClearPlayerConfigs();
 
     }
 

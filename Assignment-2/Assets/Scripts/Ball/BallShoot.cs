@@ -11,13 +11,12 @@ public class BallShoot : MonoBehaviour
     public GameObject body;
     public GameObject ballPrefab;
     GameObject ball;
-    int score = 0;
     GameObject scoreCounter;
 
     void IncreaseScore()
     {
-        score++;
-        scoreCounter.GetComponent<TextMeshProUGUI>().text = "Score: " + score;
+        GameController.SetCurrentScore(GameController.highScore++);
+        scoreCounter.GetComponent<TextMeshProUGUI>().text = "Score: " + GameController.highScore;
     }
 
     void ShootBall(InputAction.CallbackContext _)
@@ -42,6 +41,7 @@ public class BallShoot : MonoBehaviour
     private void Start()
     {
         scoreCounter = GameObject.Find("Score");
+        scoreCounter.GetComponent<TextMeshProUGUI>().text = "Score: " + GameController.highScore;
     }
 
     private void OnEnable()

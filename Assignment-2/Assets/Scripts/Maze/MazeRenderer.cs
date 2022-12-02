@@ -44,7 +44,17 @@ public class MazeRenderer : MonoBehaviour
         Draw(maze, width, height);
         gameController.LoadPlayerPos();
         gameController.LoadEnemyPos();
-        if (GameController.playerPos != null)
+        gameController.LoadScore();
+
+        bool xCheckP = GameController.playerPos.x < 2.3f && GameController.playerPos.x > -2.3f;
+        bool yCheckP = GameController.playerPos.y < 2.3f && GameController.playerPos.y > -2.3f;
+        bool zCheckP = GameController.playerPos.z < 2.3f && GameController.playerPos.z > -2.3f;
+
+        bool xCheckE = GameController.enemyPos.x < 2.3f && GameController.playerPos.x > -2.3f;
+        bool yCheckE = GameController.enemyPos.y < 2.3f && GameController.playerPos.y > -2.3f;
+        bool zCheckE = GameController.enemyPos.z < 2.3f && GameController.playerPos.z > -2.3f;
+
+        if (GameController.playerPos != null && xCheckP && yCheckP && zCheckP)
         {
             Instantiate(player, GameController.playerPos, Quaternion.identity);
         } else
@@ -54,7 +64,7 @@ public class MazeRenderer : MonoBehaviour
 
         Instantiate(goalpost, endCoords, Quaternion.identity);
 
-        if (GameController.enemyPos != null)
+        if (GameController.enemyPos != null && xCheckE && yCheckE && zCheckE)
         {
             StartCoroutine(SpawnEnemy(GameController.enemyPos));
         }
