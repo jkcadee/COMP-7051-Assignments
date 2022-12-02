@@ -3,6 +3,8 @@ using System.IO;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections.Generic;
+using UnityEngine.Rendering;
+using UnityEngine.InputSystem;
 
 public class GameController : MonoBehaviour
 {
@@ -11,7 +13,9 @@ public class GameController : MonoBehaviour
     public static Vector3 enemyPos;
     public GameObject player;
     public GameObject enemy;
+    public Volume volume;
     const string fileName = "/gameData.dat";
+    InputActions ia;
 
     public static GameController gCtrl;
 
@@ -22,6 +26,29 @@ public class GameController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             gCtrl = this;
         }
+
+        volume.enabled = false;
+        ia = new();
+    }
+
+    private void OnEnable()
+    {
+        ia.Player.Timeshift.Enable();
+        ia.Player.Timeshift.performed += TimeShift;
+    }
+
+    private void OnDisable()
+    {
+        ia.Player.Timeshift.Disable();
+        ia.Player.Timeshift.performed -= TimeShift;
+    }
+
+    void TimeShift(InputAction.CallbackContext _)
+    {
+        volume.enabled = !volume.enabled;
+        MusicController.Instance.StopMusic();
+        MusicController.Instance.SelectMusic(volume.enabled ? 1 : 0);
+        MusicController.Instance.PlayMusic();
     }
 
     private void OnApplicationQuit()
