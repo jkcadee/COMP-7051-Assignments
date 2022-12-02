@@ -5,7 +5,9 @@ using UnityEngine;
 public class ToggleShaders : MonoBehaviour
 {
     public GameObject cam;
+    public Light flashlight;
     bool fogOn = false;
+    bool flashLightOn = false;
     EnableDepthMapAndBlit fogScript;
 
     // Start is called before the first frame update
@@ -22,6 +24,20 @@ public class ToggleShaders : MonoBehaviour
        {
             fogOn = !fogOn;
        }
+
+       if (Input.GetKeyDown(KeyCode.E))
+       {
+            flashLightOn = !flashLightOn;
+       }
+
+       if(flashLightOn){
+            flashlight.enabled = true;
+       }
+
+       if(!flashLightOn){
+          flashlight.enabled = false;  
+       }
+
 
        if(fogOn){
             fogScript.enabled = true;
