@@ -11,7 +11,7 @@ public class ToggleShaders : MonoBehaviour
     EnableDepthMapAndBlit fogScript;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         fogScript = cam.GetComponent<EnableDepthMapAndBlit>();
