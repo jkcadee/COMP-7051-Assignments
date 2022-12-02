@@ -71,6 +71,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Timeshift"",
+                    ""type"": ""Button"",
+                    ""id"": ""5a9c79b7-5236-426c-a808-c0f8ad3d9948"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -205,6 +214,39 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3190d845-3a7b-462c-9142-7349d0ee3b24"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0bf2a686-a76d-4e9b-b680-4747bdf8f549"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Timeshift"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f42e8851-3b84-45d2-bb66-edca011b8f3d"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Timeshift"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -218,6 +260,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Player_Noclip = m_Player.FindAction("Noclip", throwIfNotFound: true);
         m_Player_Reset = m_Player.FindAction("Reset", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_Timeshift = m_Player.FindAction("Timeshift", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -282,6 +325,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Noclip;
     private readonly InputAction m_Player_Reset;
     private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_Timeshift;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -291,6 +335,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Noclip => m_Wrapper.m_Player_Noclip;
         public InputAction @Reset => m_Wrapper.m_Player_Reset;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        public InputAction @Timeshift => m_Wrapper.m_Player_Timeshift;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -315,6 +360,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Timeshift.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTimeshift;
+                @Timeshift.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTimeshift;
+                @Timeshift.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTimeshift;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -334,6 +382,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Timeshift.started += instance.OnTimeshift;
+                @Timeshift.performed += instance.OnTimeshift;
+                @Timeshift.canceled += instance.OnTimeshift;
             }
         }
     }
@@ -345,5 +396,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnNoclip(InputAction.CallbackContext context);
         void OnReset(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnTimeshift(InputAction.CallbackContext context);
     }
 }
