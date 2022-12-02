@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour
 {
-    public int highScore = 0;
+    public static int highScore = 0;
     public static Vector3 playerPos;
     public static Vector3 enemyPos;
     public GameObject player;
@@ -21,8 +21,6 @@ public class GameController : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
             gCtrl = this;
-            //LoadScore();
-
         }
     }
 
@@ -30,17 +28,19 @@ public class GameController : MonoBehaviour
     {
         SavePlayerPos();
         SaveEnemyPos();
+        Debug.Log(highScore);
+        SaveScore(highScore);
     }
 
     public void LoadScore()
     {
-        SetCurrentScore(0);
         if (File.Exists(Application.persistentDataPath + fileName))
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             FileStream fileStream = File.Open(Application.persistentDataPath + fileName, FileMode.Open, FileAccess.Read);
             GameData data = (GameData)binaryFormatter.Deserialize(fileStream);
             fileStream.Close();
+            Debug.Log(data.score);
             highScore = data.score;
         }
     }
@@ -64,17 +64,13 @@ public class GameController : MonoBehaviour
 
     public void SaveScore(int score)
     {
-        if (score > gCtrl.highScore)
-        {
-            gCtrl.highScore = score;
-
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            FileStream fileStream = File.Open(Application.persistentDataPath + fileName, FileMode.OpenOrCreate);
-            GameData data = new GameData();
-            data.score = score;
-            binaryFormatter.Serialize(fileStream, data);
-            fileStream.Close();
-        }
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
+        FileStream fileStream = File.Open(Application.persistentDataPath + fileName, FileMode.OpenOrCreate);
+        GameData data = new GameData();
+        data.score = score;
+        binaryFormatter.Serialize(fileStream, data);
+        fileStream.Close();
+        
     }
 
     public void SavePlayerPos()
@@ -104,7 +100,7 @@ public class GameController : MonoBehaviour
         return PlayerPrefs.GetInt("CurrentScore");
     }
 
-    public void SetCurrentScore(int num)
+    public static void SetCurrentScore(int num)
     {
         PlayerPrefs.SetInt("CurrentScore", num);
     }
