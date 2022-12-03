@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class ToggleShaders : MonoBehaviour
 {
-    public GameObject cam;
+    public GameObject fogCube;
     public Light flashlight;
     bool fogOn = false;
     bool flashLightOn = false;
-    EnableDepthMapAndBlit fogScript;
 
     // Start is called before the first frame update
     void Awake()
     {
-        cam = GameObject.FindGameObjectWithTag("MainCamera");
-        fogScript = cam.GetComponent<EnableDepthMapAndBlit>();
+
     }
 
     // Update is called once per frame
@@ -22,6 +20,7 @@ public class ToggleShaders : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
        {
+            Debug.Log("FOG");
             fogOn = !fogOn;
        }
 
@@ -40,11 +39,11 @@ public class ToggleShaders : MonoBehaviour
 
 
        if(fogOn){
-            fogScript.enabled = true;
+            fogCube.SetActive(true);
             MusicController.Instance.ActivateFogMode();
        }
        if(!fogOn){
-            fogScript.enabled = false;
+            fogCube.SetActive(false);
             MusicController.Instance.DeactivateFogMode();
        }
     }
