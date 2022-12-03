@@ -386,16 +386,16 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 20.78461
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.04
+  near clip plane: 0.3
   far clip plane: 30
-  field of view: 60
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -461,7 +461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b74ca3f9cd2c6be4d8d1f3b23bc30b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: ae14bef8910daa7428938ded36ff8be4, type: 2}
+  mat: {fileID: 2100000, guid: b3d0515d2df09cd4cb3d86c209482a80, type: 2}
+  targetCamera: {fileID: 4619847597222183237}
 --- !u!114 &4840889484589093176
 MonoBehaviour:
   m_ObjectHideFlags: 0

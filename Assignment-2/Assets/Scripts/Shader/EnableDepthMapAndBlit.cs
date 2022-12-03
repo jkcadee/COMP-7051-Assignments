@@ -4,9 +4,10 @@ using System.Collections;
 [ExecuteInEditMode]
 public class EnableDepthMapAndBlit : MonoBehaviour {
     public Material mat;
+    public Camera targetCamera;
 
 	void Start () {
-        Camera.main.depthTextureMode = DepthTextureMode.Depth;
+        targetCamera.depthTextureMode = DepthTextureMode.Depth;
 	}
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
