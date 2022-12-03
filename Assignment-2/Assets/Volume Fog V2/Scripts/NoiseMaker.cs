@@ -53,10 +53,11 @@ public class NoiseMaker : MonoBehaviour
     }
 
 
-    [ContextMenu("Save Noise")]
-    void CreateTexture3D()
-    {
-        // Save the texture to your Unity Project
-        AssetDatabase.CreateAsset(tex3D, "Assets/Volume Fog/3DTexture.asset");
-    }
+    //[ContextMenu("Save Noise")]
+    //void CreateTexture3D()
+    //{
+    //    // Save the texture to your Unity Project
+    //    AssetDatabase.CreateAsset(tex3D, "Assets/Volume Fog/3DTexture.asset");
+        
+    //}
 }

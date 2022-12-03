@@ -88,7 +88,7 @@ public class MazeRenderer : MonoBehaviour
 
                 if (cell.HasFlag(WallState.ENTRANCE) && !startFlag)
                 {
-                    startCoords = new Vector3(-width / 2 + i, 0.1f, -height / 2 + j);
+                    startCoords = new Vector3(-width / 2 + i + 0.1f, 0.1f, -height / 2 + j + 0.1f);
                     startFlag = true;
                 }
                 else if (cell.HasFlag(WallState.EXIT) && !endFlag)
